@@ -1,0 +1,79 @@
+﻿    1  cat /etc/os-release
+    2  uname -a
+    3  id
+    4  sudo apt update
+    5  sudo apt install sudo acl libcap2-bin
+    6  sudo -v
+    7  sudo groupadd students
+    8  sudo useradd -m -u 1234 -g students -s /bin/bash user1
+    9  sudo passwd user1\
+   10  sudo passwd user1
+   11  id user1
+   12  sudo chage -M 90 user1
+   13  sudo chage -l user1
+   14  sudo find / -type f -perm -4000 -ls 2>/dev/null
+   15  ps -eo pid=,ruid=,euid=,user=,comm= | awk '$2 != 0 && $3 == 0'
+   16  ps -eo pid=,ruid=,euid=,user=,comm= | awk '$2 != 0 && $3 == 0' > ~/processes.out
+   17  cat ~/processes.out 
+   18  sudo find / -type f -perm -4000 -ls 2>/dev/null > ~/suid.out
+   19 cat ~/suid.out 
+   20  sudo sh -c 'echo "secret" > /root/secret.txt'  
+   21  sudo chmod 600 /root/secret.txt
+   22  sudo user -u user1 cat /root/secret.txt
+   23  sudo -u user1 cat /root/secret.txt
+   24  which cat
+   25  sudo mkdir -p /home/user1/tools
+   26  sudo cp /usr/bin/cat /home/user1/tools
+   27  sudo chown root:root /home/user1/tools/cat
+   28  sudo chmod 4755 /home/user1/tools/cat
+   29  ls -l /home/user1/tools/cat
+   30  sudo ls -l /home/user1/tools/cat
+   31  sudo -u user1 /home/user1/tools/cat /root/secret.txt
+   32  stat /home/user1/ > ~/stat.out
+   33  stat /home/user1/tools/cat >> ~/stat.out
+   34  sudo stat /home/user1/tools/cat >> ~/stat.out
+   35  sudo -u user1 touch /home/user1/test.txt
+   36  ls -l /home/user1/test.txt
+   37  sudo ls -l /home/user1/test.txt
+   38  sudo -u user1 chown root:root /home/user1/test.txt
+   39  which chown 
+   40  sudo cp /usr/bin/chown /home/user1/tools/chown
+   41  sudo chown root:root /home/user1/tools/chown
+   42  sudo setcap cap_chown+ep /home/user1/tools/chown
+   43  getcap /home/user1/tools/chown
+   44  sudo -u user1 /home/user1/tools/chown root:root /home/user1/test.txt
+   45  ls -l /home/user1/test.txt
+   46  sudo ls -l /home/user1/test.txt
+   47  getcap /home/user1/tools/chown > ~/getcap.out
+   48  sudo getcap /home/user1/tools/chown > ~/getcap.out
+   49  cat ~/getcap.out 
+   50  sudo stat /home/user1/tools/chown >> ~/stat.out
+   51  sudo visudo -f /etc/sudoers.d/user1-time
+   52  sudo -1 -U user1
+   53  sudo -l -U user1
+   54  date
+   55  sudo -u user1 sudo /usr/bin/date -s "2026-11-15 11:00:00"
+   56  date
+   57  sudo -u user1 sudo /usr/bin/date -s "2026-11-15 11:00:00"
+   58  date
+   59  mkdir -p ~/mephi-linux-sec
+   60  sudo apt install nano
+   61  nano ~/history.out
+   62  history > ~/mephi-linux-sec/history.out
+   63  sudo visudo -f /etc/sudoers.d/user1-time
+   64  sudo -l -U user1
+   65  date
+   66  sudo -u user1 sudo /usr/bin/date -s "2022-01-01 10:00:00"
+   67  date
+   68  sudo -u user1 sudo /usr/bin/date -s "2022-01-01 10:00:00"
+   69  date
+   70  timedaatectl status
+   71  timedatectl status
+   72  sudo timedatectl set-ntp false
+   73  timedatectl status
+   74  sudo -u user1 sudo /usr/bin/date -s "2022-01-01 10:00:00"
+   75  date
+   76  sudo timedatectl set-ntp true
+   77  date
+   78  history
+   79  history >> ~/mephi-linux-sec/history.out
